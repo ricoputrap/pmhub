@@ -22,14 +22,20 @@ export default async function Page({ searchParams }: PageProps) {
     <div>
       <div className='flex justify-between items-center'>
         <h1 className="text-2xl font-semibold">Property</h1>
-
-        <button className="btn btn-primary h-fit min-h-min py-3">Add Property</button>
       </div>
 
       <div className='card bg-base-100 p-4 mt-4'>
+        <div className='mb-4 flex justify-between items-center'>
+          <Search placeholder="Search property..." />
 
-        {/* search bar */}
-        <Search placeholder="Search property..." />
+          <button className="btn btn-primary h-fit min-h-min py-2 px-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            
+            Add Property
+          </button>
+        </div>
 
         <Suspense fallback={<TableSkeleton />}>
           <PropertyTable query={query} page={currentPage} />

@@ -34,9 +34,9 @@ export default async function PropertyTable({ query, page }: Props) {
               <td>{row.email}</td>
               <td>{row.timezone}</td>
               <td className='text-center'>{row.is_active ? (
-                <div className='badge badge-neutral text-xs text-secondary-content'>Active</div>
+                <div className='badge badge-neutral badge-lg text-xs text-secondary-content'>Active</div>
               ) : (
-                <div className='badge badge-accent text-xs text-secondary-content'>Inactive</div>
+                <div className='badge badge-accent badge-lg text-xs text-secondary-content'>Inactive</div>
               )}</td>
             </tr>
           ))}
