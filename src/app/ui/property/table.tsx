@@ -3,8 +3,15 @@ import React from 'react'
 import { fetchProperties } from '@/app/lib/property';
 import { PropertyTable } from '@/app/lib/definitions';
 
-export default async function PropertyTable() {
-  const properties: PropertyTable[] = await fetchProperties();
+const ITEMS_PER_PAGE = 10;
+
+interface Props {
+  query: string;
+  page: number;
+}
+
+export default async function PropertyTable({ query, page }: Props) {
+  const properties: PropertyTable[] = await fetchProperties(query, page);
 
   return (
     <div className="overflow-x-auto">
@@ -22,14 +29,14 @@ export default async function PropertyTable() {
         <tbody>
           {properties.map((row, index) => (
             <tr key={row.id}>
-              <td className='text-center'>{index + 1}</td>
+              <td className='text-center'>{index + 1 + ((page - 1) * ITEMS_PER_PAGE)}</td>
               <td>{row.name}</td>
               <td>{row.email}</td>
               <td>{row.timezone}</td>
               <td className='text-center'>{row.is_active ? (
-                <div className='badge badge-success'>Active</div>
+                <div className='badge badge-neutral text-xs text-secondary-content'>Active</div>
               ) : (
-                <div className='badge badge-warning'>Inactive</div>
+                <div className='badge badge-accent text-xs text-secondary-content'>Inactive</div>
               )}</td>
             </tr>
           ))}

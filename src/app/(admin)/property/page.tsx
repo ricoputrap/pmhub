@@ -1,14 +1,22 @@
 import { Suspense } from "react";
 
-import { fetchProperties } from "@/app/lib/property";
 import PropertyTable from "@/app/ui/property/table";
+import Search from "@/app/ui/search";
 
 const TableSkeleton = () => (
   <div>Loading...</div>
 )
 
-export default async function Page() {
-  await fetchProperties();
+interface PageProps {
+  searchParams?: {
+    query?: string;
+    page?: number;
+  }
+}
+
+export default async function Page({ searchParams }: PageProps) {
+  const query = searchParams?.query ?? '';
+  const currentPage = searchParams?.page ?? 1;
 
   return (
     <div>
@@ -19,8 +27,12 @@ export default async function Page() {
       </div>
 
       <div className='card bg-base-100 p-4 mt-4'>
+
+        {/* search bar */}
+        <Search placeholder="Search property..." />
+
         <Suspense fallback={<TableSkeleton />}>
-          <PropertyTable />
+          <PropertyTable query={query} page={currentPage} />
         </Suspense>
       </div>
     </div>

@@ -8,3 +8,8 @@ export type Property = {
 }
 
 export type PropertyTable = Pick<Property, 'id' | 'name' | 'email' | 'timezone' | 'is_active'>;
+
+export enum EnumSearchParams {
+  SEARCH = 'query',
+  PAGE = 'page',
+}
