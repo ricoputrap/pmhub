@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1705231772299,
+      "tag": "0000_red_the_watchers",
+      "breakpoints": true
+    }
+  ]
+}
