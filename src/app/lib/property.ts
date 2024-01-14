@@ -3,7 +3,7 @@ import { property } from '@/db/schema';
 import { and, sql } from 'drizzle-orm';
 import { PropertyTable } from './definitions';
 
-export const ITEMS_PER_PAGE = 2;
+export const ITEMS_PER_PAGE = 10;
 
 export async function fetchProperties(query: string = '', page: number = 1): Promise<PropertyTable[]> {
   try {
@@ -36,20 +36,19 @@ export async function fetchProperties(query: string = '', page: number = 1): Pro
 
 export async function getPropertyTotalPages(query: string = '') {
   try {
-    // const filteredData = data.filter((property) => {
-    //   if (!query) return true;
+    const lowerCasedQuery = query.toLowerCase();
 
-    //   const searchQuery = query.toLocaleLowerCase();
-    //   if (property.name.toLowerCase().includes(searchQuery)) return true;
-    //   if (property.email.toLowerCase().includes(searchQuery)) return true;
-    //   if (property.timezone.toLocaleLowerCase().includes(searchQuery)) return true;
+    const result = await db.select({
+      count: sql<number>`count(*)`
+    })
+      .from(property)
+      .where(and(
+        sql`lower(${property.name}) like '%' || ${lowerCasedQuery} || '%'`,
+        sql`lower(${property.email}) like '%' || ${lowerCasedQuery} || '%'`,
+        sql`lower(${property.timezone}) like '%' || ${lowerCasedQuery} || '%'`
+      ));
 
-    //   return false;
-    // });
-
-    return 10;
-
-    // return Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+    return Math.ceil(Number(result[0].count) / ITEMS_PER_PAGE);
   }
   catch (error) {
     console.error("[property.ts] getPropertyTotalPages - error:", error);
