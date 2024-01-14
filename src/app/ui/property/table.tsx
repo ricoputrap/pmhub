@@ -1,9 +1,17 @@
 import React from 'react'
 
 import { fetchProperties } from '@/app/lib/property';
-import { PropertyTable } from '@/app/lib/definitions';
+import { PropertyTable, TableColumn } from '@/app/lib/definitions';
 
 const ITEMS_PER_PAGE = 10;
+
+export const PROPERTY_TABLE_COLUMNS: TableColumn[] = [
+  { key: 'no', label: 'No', isCentered: true },
+  { key: 'name', label: 'Name' },
+  { key: 'email', label: 'Email' },
+  { key: 'timezone', label: 'Timezone' },
+  { key: 'status', label: 'Status', isCentered: true },
+]
 
 interface Props {
   query: string;

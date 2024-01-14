@@ -13,3 +13,9 @@ export enum EnumSearchParams {
   SEARCH = 'query',
   PAGE = 'page',
 }
+
+export type TableColumn = {
+  key: string;
+  label: string;
+  isCentered?: boolean;
+}
