@@ -34,3 +34,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Database
+1. Setup DB
+   1. Create turso db: `turso db create pmhub`
+   2. Prepare DB URL
+      1. Generate DB URL: `turso db show pmhub --url`
+      2. Store it in `.env` as `DATABASE_URL`
+   3. Prepare Auth Token:
+      1. Generate token: `turso db tokens create pmhub -e none`
+      2. Store it in `.env` as `DATABASE_AUTH_TOKEN`
+2. Define schemas (see `src/db/schema.ts`)
+3. Create a drizzle configuration file
+    ```typescript
+    import type { Config } from 'drizzle-kit';
+
+    export default {
+      schema: './src/db/schema.ts',
+      out: './drizzle',
+      driver: 'turso',
+      dbCredentials: {
+        url: process.env.DATABASE_URL!,
+        authToken: process.env.DATABASE_AUTH_TOKEN!
+      }
+    } satisfies Config;
+    ```
+4. Generate the migration scripts: `npm run db:generate`
+5. Execute the migration: `npm run db:push`
