@@ -56,9 +56,12 @@ const NavLinks = () => {
             <Link
               href={link.href}
               className={clsx(
-                'text-neutral rounded-md flex h-[48px] grow items-center justify-start gap-2 p-3 text-sm font-medium hover:bg-base-300 hover:text-accent-content',
+                'text-secondary-content text-sm font-medium',
+                'h-[48px] p-3 rounded-md',
+                'flex grow items-center justify-start gap-2',
+                'hover:bg-base-content',
                 {
-                  'bg-base-content text-secondary-content hover:bg-base-content hover:text-secondary-content': pathname === link.href,
+                  'bg-base-content': pathname === link.href,
                 },
               )}
             >
