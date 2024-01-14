@@ -1,6 +1,6 @@
 import db from '@/db';
 import { property } from '@/db/schema';
-import { and, sql } from 'drizzle-orm';
+import { or, sql } from 'drizzle-orm';
 import { PropertyTable } from './definitions';
 
 export const ITEMS_PER_PAGE = 10;
@@ -18,7 +18,7 @@ export async function fetchProperties(query: string = '', page: number = 1): Pro
       is_active: property.is_active
     })
       .from(property)
-      .where(and(
+      .where(or(
         sql`lower(${property.name}) like '%' || ${lowerCasedQuery} || '%'`,
         sql`lower(${property.email}) like '%' || ${lowerCasedQuery} || '%'`,
         sql`lower(${property.timezone}) like '%' || ${lowerCasedQuery} || '%'`
@@ -42,7 +42,7 @@ export async function getPropertyTotalPages(query: string = '') {
       count: sql<number>`count(*)`
     })
       .from(property)
-      .where(and(
+      .where(or(
         sql`lower(${property.name}) like '%' || ${lowerCasedQuery} || '%'`,
         sql`lower(${property.email}) like '%' || ${lowerCasedQuery} || '%'`,
         sql`lower(${property.timezone}) like '%' || ${lowerCasedQuery} || '%'`
