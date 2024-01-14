@@ -9,6 +9,10 @@ export type Property = {
 
 export type PropertyTable = Pick<Property, 'id' | 'name' | 'email' | 'timezone' | 'is_active'>;
 
+export interface NewProperty extends Property {
+  password: string;
+}
+
 export enum EnumSearchParams {
   SEARCH = 'query',
   PAGE = 'page',

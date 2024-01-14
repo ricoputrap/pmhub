@@ -378,3 +378,24 @@ export async function fetchProperties(query: string = '', page: number = 1): Pro
     throw new Error('Failed to fetch properties.')
   }
 }
+
+export async function getPropertyTotalPages(query: string = '') {
+  try {
+    const filteredData = data.filter((property) => {
+      if (!query) return true;
+
+      const searchQuery = query.toLocaleLowerCase();
+      if (property.name.toLowerCase().includes(searchQuery)) return true;
+      if (property.email.toLowerCase().includes(searchQuery)) return true;
+      if (property.timezone.toLocaleLowerCase().includes(searchQuery)) return true;
+
+      return false;
+    });
+
+    return Math.ceil(filteredData.length / ITEMS_PER_PAGE);
+  }
+  catch (error) {
+    console.error("[property.ts] getPropertyTotalPages - error:", error);
+    throw new Error('Failed to get the total pages in the Property table.')
+  }
+}

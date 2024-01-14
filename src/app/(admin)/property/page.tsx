@@ -4,6 +4,7 @@ import PropertyTable, { PROPERTY_TABLE_COLUMNS } from "@/app/ui/property/table";
 import Search from "@/app/ui/search";
 import Pagination from "@/app/ui/pagination";
 import TableSkeleton from "@/app/ui/table-skeleton";
+import { getPropertyTotalPages } from "@/app/lib/property";
  
 
 interface PageProps {
@@ -16,6 +17,8 @@ interface PageProps {
 export default async function Page({ searchParams }: PageProps) {
   const query = searchParams?.query ?? '';
   const currentPage = searchParams?.page ?? 1;
+
+  const totalPages = await getPropertyTotalPages(query);
 
   return (
     <div>
@@ -43,7 +46,7 @@ export default async function Page({ searchParams }: PageProps) {
 
         {/* pagination */}
         <div className='mt-4 flex justify-center items-center'>
-          <Pagination query={query} />
+          <Pagination totalPages={totalPages} />
         </div>
       </div>
     </div>
