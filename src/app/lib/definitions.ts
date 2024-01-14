@@ -1,9 +1,8 @@
 export type Property = {
-  id: string;
+  id: number;
   name: string;
   email: string;
   timezone: string;
-  contact_number: string;
   is_active: boolean;
 }
 
