@@ -37,6 +37,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 ## Database
+
+### Configuration
 1. Setup DB
    1. Create turso db: `turso db create pmhub`
    2. Prepare DB URL
@@ -62,3 +64,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
     ```
 4. Generate the migration scripts: `npm run db:generate`
 5. Execute the migration: `npm run db:push`
+
+### Seeding
+1. Open the shell: `turso db shell pmhub`
+2. Run the scripts in `src/db/seed.sql` on the shell
