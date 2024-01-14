@@ -13,12 +13,12 @@ export default function Layout({ children }: Props) {
 
       <div className='flex-1'>
         <div className="navbar bg-base-100">
-          <div className="avatar ml-auto">
+          <div className="avatar w-full navbar-end pr-3">
             <div className="rounded-full">
               <Image
                 src="/ahmed.jpeg"
-                width={24}
-                height={24}
+                width={28}
+                height={28}
                 alt="profile"
               />
             </div>
