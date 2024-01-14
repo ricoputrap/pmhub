@@ -31,7 +31,7 @@ export default async function Page({ searchParams }: PageProps) {
         <div className='mb-4 flex justify-between items-center'>
           <Search placeholder="Search property..." />
 
-          <button className="btn btn-primary h-fit min-h-min py-2 px-2">
+          <button className="btn btn-neutral h-fit min-h-min py-2 px-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
             </svg>
