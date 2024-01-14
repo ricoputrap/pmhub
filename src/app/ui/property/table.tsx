@@ -1,9 +1,7 @@
 import React from 'react'
 
-import { fetchProperties } from '@/app/lib/property';
+import { fetchProperties, ITEMS_PER_PAGE } from '@/app/lib/property';
 import { PropertyTable, TableColumn } from '@/app/lib/definitions';
-
-const ITEMS_PER_PAGE = 10;
 
 export const PROPERTY_TABLE_COLUMNS: TableColumn[] = [
   { key: 'no', label: 'No', isCentered: true },
