@@ -5,6 +5,7 @@ import Search from "@/app/ui/search";
 import Pagination from "@/app/ui/pagination";
 import TableSkeleton from "@/app/ui/table-skeleton";
 import { getPropertyTotalPages } from "@/app/lib/property";
+import ButtonAdd from "@/app/ui/btn-add";
  
 
 interface PageProps {
@@ -31,15 +32,13 @@ export default async function Page({ searchParams }: PageProps) {
         <div className='mb-4 flex justify-between items-center'>
           <Search placeholder="Search property..." />
 
-          <button className="btn btn-neutral h-fit min-h-min py-2 px-2">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-
-            Add Property
-          </button>
+          <ButtonAdd
+            label='Add Property'
+            href='/property/add'
+          />
         </div>
 
+        {/* data table */}
         <Suspense fallback={<TableSkeleton columns={PROPERTY_TABLE_COLUMNS} />}>
           <PropertyTable query={query} page={currentPage} />
         </Suspense>
