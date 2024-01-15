@@ -1,6 +1,6 @@
 import db from '@/db';
 import { property } from '@/db/schema';
-import { or, sql } from 'drizzle-orm';
+import { eq, or, sql } from 'drizzle-orm';
 import { PropertyTable } from './definitions';
 
 export const ITEMS_PER_PAGE = 10;
@@ -53,5 +53,25 @@ export async function getPropertyTotalPages(query: string = '') {
   catch (error) {
     console.error("[property.ts] getPropertyTotalPages - error:", error);
     throw new Error('Failed to get the total pages in the Property table.')
+  }
+}
+
+export async function getProperty(id: string) {
+  try {
+    return await db
+      .select({
+        id: property.id,
+        name: property.name,
+        email: property.email,
+        timezone: property.timezone,
+        contact_number: property.contact_number,
+        is_active: property.is_active
+      })
+      .from(property)
+      .where(eq(property.id, Number(id)));
+  }
+  catch (error) {
+    console.error("[property.ts] getProperty - error:", error);
+    throw new Error('Failed to fetch property.')
   }
 }
