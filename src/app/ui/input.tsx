@@ -13,7 +13,7 @@ const Input: React.FC<Props> = ({ label, name, placeholder, type = 'text', requi
   return (
     <label className="form-control w-full">
       <div className="label">
-        <span className="label-text">{ label }</span>
+        <span className="label-text font-medium">{ label }</span>
       </div>
 
       <input

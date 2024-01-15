@@ -47,11 +47,11 @@ export default async function Page() {
           />
 
           <div className='mt-6 flex justify-end gap-4'>
-            <Link href='/property' className='btn btn-active'>
+            <Link href='/property' className='btn h-fit py-2 px-4 rounded-2xl'>
               Cancel
             </Link>
 
-            <button className='btn btn-neutral' type='submit'>
+            <button className='btn btn-neutral h-fit py-2 px-4 rounded-2xl' type='submit'>
               Submit
             </button>
           </div>

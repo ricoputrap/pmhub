@@ -27,9 +27,9 @@ export default async function Page({ searchParams }: PageProps) {
         <h1 className="text-2xl font-semibold">Property</h1>
       </div>
 
-      <div className='bg-base-100 mt-4'>
+      <div className='bg-base-100 mt-5'>
         {/* search & add button */}
-        <div className='mb-4 flex justify-between items-center'>
+        <div className='mb-5 flex justify-between items-center'>
           <Search placeholder="Search property..." />
 
           <ButtonAdd
