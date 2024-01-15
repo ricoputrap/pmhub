@@ -8,11 +8,11 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   return (
-    <main className='flex h-screen bg-base-200'>
+    <main className='flex h-screen'>
       <SideNav />
 
       <div className='flex-1'>
-        <div className="navbar bg-base-100">
+        <div className="navbar border-b-[1px]">
           <div className="avatar w-full navbar-end pr-3">
             <div className="rounded-full">
               <Image
@@ -25,7 +25,7 @@ export default function Layout({ children }: Props) {
           </div>
         </div>
 
-        <div className='p-6'>
+        <div className='p-4'>
           {children}
         </div>
       </div>

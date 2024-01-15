@@ -20,10 +20,10 @@ export default async function PropertyTable({ query, page }: Props) {
   const properties: PropertyTable[] = await fetchProperties(query, page);
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto min-h-[530px] flex flex-col">
       <table className="table">
         <thead>
-          <tr>
+          <tr className='bg-base-200'>
             <th className='text-center'>No</th>
             <th>Name</th>
             <th>Email</th>
@@ -48,6 +48,12 @@ export default async function PropertyTable({ query, page }: Props) {
           ))}
         </tbody>
       </table>
+
+      {properties.length == 0 && (
+        <div className='h-full flex-1 flex justify-center items-center'>
+          NOT FOUND
+        </div>
+      )}
     </div>
   )
 }

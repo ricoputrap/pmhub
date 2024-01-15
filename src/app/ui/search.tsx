@@ -37,7 +37,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         placeholder={ placeholder }
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue={searchParams.get('query')?.toString() ?? ''}
-        className="input input-bordered input-sm w-full max-w-xs pl-8"
+        className="input input-bordered input-sm w-full max-w-xs h-[38px] pl-8 rounded-3xl"
       />
     </div>
   );
