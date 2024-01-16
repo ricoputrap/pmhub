@@ -121,3 +121,18 @@ export async function editProperty(formData: FormData) {
   revalidatePath('/property');
   redirect('/property');
 }
+
+export async function editPropertyStatus(id: number, active: boolean) {
+  try {
+    await db
+      .update(property)
+      .set({ is_active: active })
+      .where(eq(property.id, id));
+
+    revalidatePath('/property');
+  }
+  catch (error) {
+    console.error("[property.ts] togglePropertyStatus - error:", error);
+    throw new Error('Failed to toggle property status.')
+  }
+}
