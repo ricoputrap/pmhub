@@ -15,6 +15,7 @@ export async function fetchProperties(query: string = '', page: number = 1): Pro
       name: property.name,
       email: property.email,
       timezone: property.timezone,
+      contact_number: property.contact_number,
       is_active: property.is_active
     })
       .from(property)
