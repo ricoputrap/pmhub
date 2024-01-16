@@ -12,7 +12,7 @@ export default function Layout({ children }: Props) {
       <SideNav />
 
       <div className='flex-1'>
-        <div className="navbar border-b-[1px]">
+        <div className="navbar bg-neutral border-b-[1px]">
           <div className="avatar w-full navbar-end pr-3">
             <div className="rounded-full">
               <Image
