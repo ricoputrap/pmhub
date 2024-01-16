@@ -14,7 +14,7 @@ const SwitchStatus: React.FC<Props> = ({ id, active }) => {
   const open = () => {
     const action = active ? EnumAction.DEACTIVATE : EnumAction.ACTIVATE
     openDialog(id, action)
-    document?.getElementById('my_modal_1')?.showModal()
+    document?.getElementById('my_modal_1')?.classList.add('modal-open');
   }
 
   return (

@@ -9,7 +9,7 @@ export default function DialogConfirm() {
   const label = action === EnumAction.ACTIVATE ? 'Activate' : 'Deactivate';
 
   const closeDialog = () => {
-    document?.getElementById('my_modal_1')?.close()
+    document?.getElementById('my_modal_1')?.classList.remove('modal-open');
   }
 
   const handleSubmit = async () => {

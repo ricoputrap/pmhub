@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import bcrypt from 'bcrypt';
 import { eq } from 'drizzle-orm';
+import { EditProperty } from '@/app/lib/definitions';
 
 const PropertySchema = z.object({
   id: z
@@ -34,11 +35,11 @@ const PropertySchema = z.object({
   is_active: z.boolean()
 });
 
-const NewProperty = PropertySchema.omit({ id: true, is_active: true })
-const EditProperty = PropertySchema.omit({ id: true }).extend({ password: z.string() });
+const NewPropertySchema = PropertySchema.omit({ id: true, is_active: true })
+const EditPropertySchema = PropertySchema.omit({ id: true }).extend({ password: z.string() });
 
 export async function addProperty(formData: FormData) {
-  const { name, email, password, timezone, contact_number } = NewProperty.parse({
+  const { name, email, password, timezone, contact_number } = NewPropertySchema.parse({
     name: formData.get('name') as string,
     email: formData.get('email') as string,
     password: formData.get('password') as string,
@@ -81,7 +82,7 @@ export async function addProperty(formData: FormData) {
 }
 
 export async function editProperty(formData: FormData) {
-  const { name, email, password, timezone, contact_number, is_active } = EditProperty.parse({
+  const { name, email, password, timezone, contact_number, is_active } = EditPropertySchema.parse({
     name: formData.get('name') as string,
     email: formData.get('email') as string,
     password: formData.get('password') as string,
@@ -90,7 +91,7 @@ export async function editProperty(formData: FormData) {
     is_active: formData.get('is_active') === 'true'
   });
   
-  const body: PropertySchema = { name, email, timezone, contact_number, is_active };
+  const body: EditProperty = { name, email, timezone, contact_number };
 
   if (password) {
     // encrypt the password

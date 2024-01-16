@@ -1,16 +1,11 @@
-export type Property = {
-  id: number;
-  name: string;
-  email: string;
-  timezone: string;
-  is_active: boolean;
-}
+import { Property } from "@/db/schema";
 
-export type PropertyTable = Pick<Property, 'id' | 'name' | 'email' | 'timezone' | 'is_active'>;
+export type PropertyTable = Pick<
+  Property,
+  'id' | 'name' | 'email' | 'timezone' | 'contact_number' | 'is_active'
+>;
 
-export interface NewProperty extends Property {
-  password: string;
-}
+export type EditProperty = Partial<Omit<Property, 'id' | 'created_at' | 'updated_at' | 'is_active' >>
 
 export enum EnumSearchParams {
   SEARCH = 'query',
