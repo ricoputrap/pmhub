@@ -53,10 +53,6 @@ export default async function Page({ params }: { params: { id: string } }) {
             placeholder="Your contact number"
           />
 
-          <div>
-            <input type="checkbox" className="toggle" defaultChecked={data[0].is_active} />
-          </div>
-
           <div className='mt-6 flex justify-end gap-4'>
             <Link href='/property' className='btn h-fit py-2 px-4 rounded-2xl'>
               Cancel
