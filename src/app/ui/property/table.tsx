@@ -1,8 +1,10 @@
 import React from 'react'
 
-import { fetchProperties, ITEMS_PER_PAGE } from '@/app/lib/property';
+import { fetchProperties } from '@/app/lib/property';
 import { PropertyTable, TableColumn } from '@/app/lib/definitions';
 import Link from 'next/link';
+import SwitchStatus from './switch-status';
+import DialogConfirm from './dialog-confirm';
 
 export const PROPERTY_TABLE_COLUMNS: TableColumn[] = [
   { key: 'no', label: 'No', isCentered: true },
@@ -25,10 +27,10 @@ export default async function PropertyTable({ query, page }: Props) {
       <table className="table">
         <thead>
           <tr className='bg-base-200'>
-            <th className='text-center'>No</th>
             <th>Name</th>
             <th>Email</th>
             <th>Timezone</th>
+            <th>Contact</th>
             <th className='text-center'>Status</th>
             <th className='text-center'>Action</th>
           </tr>
@@ -37,16 +39,12 @@ export default async function PropertyTable({ query, page }: Props) {
         <tbody>
           {properties.map((row, index) => (
             <tr key={row.id}>
-              <td className='text-center'>{index + 1 + ((page - 1) * ITEMS_PER_PAGE)}</td>
               <td>{row.name}</td>
               <td>{row.email}</td>
               <td>{row.timezone}</td>
-
-              <td className='text-center'>{row.is_active ? (
-                <div className='badge badge-neutral badge-lg text-xs text-secondary-content'>Active</div>
-              ) : (
-                <div className='badge badge-accent badge-lg text-xs text-secondary-content'>Inactive</div>
-              )}
+              <td>{row.contact_number}</td>
+              <td className='text-center'>
+                <SwitchStatus id={row.id} active={row.is_active} />
               </td>
 
               <td>
@@ -68,6 +66,8 @@ export default async function PropertyTable({ query, page }: Props) {
           NOT FOUND
         </div>
       )}
+
+      <DialogConfirm />
     </div>
   )
 }
