@@ -6,7 +6,6 @@ import Pagination from "@/app/ui/pagination";
 import TableSkeleton from "@/app/ui/table-skeleton";
 import { getPropertyTotalPages } from "@/app/lib/property";
 import ButtonAdd from "@/app/ui/btn-add";
- 
 
 interface PageProps {
   searchParams?: {

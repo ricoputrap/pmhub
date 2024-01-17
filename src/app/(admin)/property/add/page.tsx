@@ -1,5 +1,6 @@
 import { addProperty } from "@/app/lib/property/actions";
 import Input from "@/app/ui/input";
+import InputPassword from "@/app/ui/input-password";
 import Link from "next/link";
 
 export default async function Page() {
@@ -24,10 +25,9 @@ export default async function Page() {
               placeholder="Your email"
               required
             />
-            <Input
+            <InputPassword
               label="Password"
               name='password'
-              type='password'
               placeholder="Your password"
               required
             />

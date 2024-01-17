@@ -1,6 +1,7 @@
 import { getProperty } from "@/app/lib/property";
 import { editProperty } from "@/app/lib/property/actions";
 import Input from "@/app/ui/input";
+import InputPassword from "@/app/ui/input-password";
 import Link from "next/link";
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -30,10 +31,9 @@ export default async function Page({ params }: { params: { id: string } }) {
               placeholder="Your email"
               required
             />
-            <Input
+            <InputPassword
               label="Password"
               name='password'
-              type='password'
               placeholder="Your password"
             />
           </div>
