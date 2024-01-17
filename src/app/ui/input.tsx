@@ -7,10 +7,10 @@ interface Props {
   type?: React.HTMLInputTypeAttribute;
   required?: boolean;
   error?: string;
-  value?: string | number | readonly string[];
+  defaultValue?: string | number | readonly string[];
 }
 
-const Input: React.FC<Props> = ({ label, name, placeholder, type = 'text', required, error, value }) => {
+const Input: React.FC<Props> = ({ label, name, placeholder, type = 'text', required, error, defaultValue }) => {
   return (
     <label className="form-control w-full">
       <div className="label">
@@ -23,7 +23,7 @@ const Input: React.FC<Props> = ({ label, name, placeholder, type = 'text', requi
         placeholder={placeholder}
         className="input input-md input-bordered w-full"
         required={!!required}
-        value={value}
+        defaultValue={defaultValue}
       />
 
       {error && (

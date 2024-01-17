@@ -17,7 +17,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <Input
             label="Name"
             name='name'
-            value={data[0].name}
+            defaultValue={data[0].name}
             placeholder="Your name"
             required
           />
@@ -26,7 +26,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             <Input
               label="Email"
               name='email'
-              value={data[0].email}
+              defaultValue={data[0].email}
               placeholder="Your email"
               required
             />
@@ -41,7 +41,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <Input
             label="Timezone"
             name='timezone'
-            value={data[0].timezone}
+            defaultValue={data[0].timezone}
             placeholder="Your timezone"
             required
           />
@@ -49,7 +49,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <Input
             label="Contact Number"
             name='contact_number'
-            value={data[0].contact_number || ''}
+            defaultValue={data[0].contact_number || ''}
             placeholder="Your contact number"
           />
 
