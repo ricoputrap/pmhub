@@ -48,7 +48,7 @@ const NavLinks = () => {
   const pathname = usePathname();
 
   return (
-    <ul className="h-full flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
+    <ul className="h-full flex flex-col gap-2">
       {LINKS.map((link) => {
         const Icon = () => link.icon;
         return (

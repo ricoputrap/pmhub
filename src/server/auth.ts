@@ -148,3 +148,8 @@ export async function login(formData: FormData) {
 
   redirect('/property');
 }
+
+export async function logout() {
+  cookies().delete('token');
+  redirect('/login');
+}

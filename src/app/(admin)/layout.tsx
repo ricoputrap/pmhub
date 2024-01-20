@@ -8,7 +8,7 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   return (
-    <main className='flex h-screen'>
+    <main className='flex min-h-screen'>
       <SideNav />
 
       <div className='flex-1'>
