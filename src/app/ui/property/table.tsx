@@ -23,8 +23,8 @@ export default async function PropertyTable({ query, page }: Props) {
   const properties: PropertyTable[] = await fetchProperties(query, page);
 
   return (
-    <div className="overflow-x-auto min-h-[530px] flex flex-col">
-      <table className="table">
+    <div className="overflow-x-auto h-[530px] overflow-y-scroll flex flex-col">
+      <table className="table table-pin-rows table-md">
         <thead>
           <tr className='bg-base-200'>
             <th>Name</th>
